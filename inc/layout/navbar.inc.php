@@ -26,7 +26,7 @@
                 <h4 class="modal-title" id="myModalLabel">Profanity Checker</h4>
             </div>
             <div class="modal-body text-justify">
-                <strong>Profanity Checker</strong> is a PHP based web-app to check large text blocks for NSFW content<br>
+                <strong>Profanity Checker</strong> is a PHP based web-app to check large text blocks for NSFW content.<br>
                 <hr>
                 How to use:
                 <ul>
@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <strong>Custom Check</strong><br>
-                        <pre>Allows you to create a custom database of words that you may deem inappropriate. This database keeps updating each time you enter a list of word. Entries are retained even after search.</pre>
+                        <pre>Allows you to create a custom database of words that you may deem inappropriate. This database keeps updating each time you enter a list of word. Entries are retained even after search. The Custom list takes words separated by a space. Eg: Input should be of type 'random words check' to check for 'random', 'words' and'check.</pre>
                     </li>
                     <li>
                         <strong>Selective Removal</strong><br>
