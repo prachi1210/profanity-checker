@@ -21,21 +21,39 @@
 		}
 		else if($check =="custom")
 		{
-			$key= $_POST['list'];
-			$key = preg_replace("/[^a-zA-Z 0-9]+/", " ", $key);
-			$key_split =explode(" ", $key);
-			print_r($key_split);
+			$list= $_POST['list'];
+			$list = preg_replace("/[^a-zA-Z 0-9]+/", " ", $list);
+			$list_split =explode(" ", $list);
+			print_r($list_split);
+			foreach ($list_split as $key => $word) 
+			{
+				$q1 = "SELECT * FROM `words` WHERE `word`='$word'";
 
+				if($query_run = mysqli_query($connection,$q1))
+				{
+
+					if(mysqli_num_rows($query_run) == 1 )
+					{	
+						//Word already in list. Do nothing
+					}
+					else
+					{
+						$q2= "INSERT INTO `words` (`word`) VALUES ('$word')";
+						mysqli_query($connection,$q2);
+					}
+						
+				}
+			}
 			$sentence = preg_replace("/[^a-zA-Z 0-9]+/", " ", $sentence);
 			$sent_split = explode(" ", $sentence);
 
-			if (in_array($key, $sent_split))
+			//if (in_array($key, $sent_split))
 			{
-			    echo "Word found";
+			  //  echo "Word found";
 			}
-			else
+			//else
 			{
-			    echo "Word not found";
+			  //  echo "Word not found";
 			}
 		}		
 	}
