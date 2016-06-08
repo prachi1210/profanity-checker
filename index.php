@@ -6,8 +6,20 @@
 		header("Location : index.php");
 	else 
 	{
-		
-		echo $_POST['sentence'];
+		$sentence= $_POST['sentence'];	
+		$key  = 'ho';
+
+		$sentence = preg_replace("/[^a-zA-Z 0-9]+/", " ", $sentence);
+		$sent_split = explode(" ", $sentence);
+
+		if (in_array($key, $sent_split))
+		{
+		    echo "Word found";
+		}
+		else
+		{
+		    echo "Word not found";
+		}
 	}
 ?>
 <html>
