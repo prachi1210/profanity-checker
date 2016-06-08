@@ -17,6 +17,7 @@ Inspired from the [What Do You Love](https://en.wikipedia.org/wiki/WDYL_(search_
   2. **Create Custom Check:** Allows user to create a custom database of words that the user may deem inappropriate to avoid entering same set of words again and again.
   3. **Selective Check:** Allows user to check for a particular set of words for exactly one instance. The words are NOT stored in a database.
 
+The Custom list takes words separated by a space. Eg: Input should be of type 'random words check' to check for 'random', 'words' and'check'
 ####Installation 
   Save connection.inc.php.sample as connection.inc.php and change variables according to your database settings and you are good to go.
 
