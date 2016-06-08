@@ -5,7 +5,27 @@
 	include 'inc/layout/header.inc.php';
     include 'inc/layout/navbar.inc.php';
     error_reporting(E_ERROR);
-	
+	if(isset($_FILES['file']))
+	{
+		$errors= "";
+	  	$error_trigger = 0;
+	  	$file_name = $_FILES['file']['name'];
+	  	$file_tmp =$_FILES['file']['tmp_name'];
+
+	  	if($_FILES["file"]["type"] !== "text/plain")
+	  	{
+	    	$errors ="<p style=\"width:100%;height:30px;text-align:center\">Upload another file, extension not allowed.</p>";
+	  	}
+
+	  	if(empty($errors)==true)
+	  	{
+	    	$filepath = "uploaded_file/" . $file_name;
+	    	move_uploaded_file($file_tmp,$filepath );
+	    	$sentence=readfile($filepath);
+	    	echo $sentence;
+	  	} 
+	}
+
 	if(!isset($_POST['sentence']) && !isset($_POST['checktype']))
 		header("Location : index.php");
 	else 
@@ -43,7 +63,7 @@
 		//Checking 
 		if($check=="standard") //standard check WDYL 
 		{
-			$url="http://www.wdylike.appspot.com/?q=".$sentence;
+			$url="http://www.wdylike.appspot.com/?q=".urlencode($sentence);
 			$res = get_curl($url);
 			if($res=="false")
 				echo "Good to go!";
@@ -102,16 +122,25 @@
 <div class="container">
 	<table width="800" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
 	    <tr>
-	        <form method="POST">
+	        <form method="POST" enctype="multipart/form-data">
 	            <td>
 	                <table width="100%" border="0"  cellspacing="1" bgcolor="#ffffff">
+	                	<tr>
+	                        <td colspan="3"><strong><center>Enter file to upload</center></strong></td>
+	                    </tr>
 	                    <tr>
-	                        <td colspan="3"><strong><center>Enter text input to check</cemter></strong></td>
+	                    	<td colspan="3"><center><input type="file" name="file"></center></td>
+	                    </tr>
+	                    <tr>
+	                    	<td colspan="3"><center>Or</center></td>
+	                	</tr>
+	                    <tr>
+	                        <td colspan="3"><strong><center>Enter text input to check</center></strong></td>
 	                    </tr>
 	            		<tr>
 	                    	<td width="78">Text input</td>
 	                        <td width="6">:</td>
-	                        <td width="500" ><textarea name="sentence" cols="50" rows="10"></textarea></td>
+	                        <td width="500" ><textarea name="sentence" cols="50" rows="5"></textarea></td>
 	                    </tr>
 	                    <tr></tr>
 	                    <tr>
@@ -142,7 +171,3 @@
 <hr>
 
 <?php include 'inc/layout/footer.inc.php';?>
-	
-
-
-	
