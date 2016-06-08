@@ -3,7 +3,7 @@
   1. [Overview:](#overview)
   2. [Modes:](#modes)
   3. [Installation:](#installation)
-  4. [Demo:](#demo)
+  4. [Screengab:](#screengrab)
 
 ####Overview:
 Profanity Checker is a simple PHP application that scans large blocks of text to prevent you from using NSFW words. 
@@ -18,6 +18,6 @@ Inspired from the [What Do You Love](https://en.wikipedia.org/wiki/WDYL_(search_
 ####Installation 
   Save connection.inc.php.sample as connection.inc.php and change variables according to your database settings and you are good to go.
 
-####Demo:
-![](screengrab/screenshot.gif?raw=true)
+####Screengrab:
+![](screengrab/screenshot.png?raw=true)
 
