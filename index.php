@@ -19,7 +19,10 @@
 	                        	<td colspan="3"><label><input type="checkbox" name="checktype" value="standard">Standard check</label><br></td>
 	                        </tr>
 	                        <tr>
-	                        	<td colspan="3"><label><input type="checkbox" name="checktype" value="custom">Custom check</label><br></td>
+	                        	<td colspan="3"><label><input type="checkbox" name="checktype" value="createcustom">Create Custom check</label><br></td>
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="3"><label><input type="checkbox" name="checktype" value="rmselect">Selective removal</label><br></td>
 	                        </tr>
 	                        <tr>
 	                        	<td width="78">Custom list</td>
