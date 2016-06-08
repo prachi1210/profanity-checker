@@ -3,11 +3,13 @@
   1. [Overview:](#overview)
   2. [Modes:](#modes)
   3. [Installation:](#installation)
-  4. [Screengab:](#screengrab)
+  4. [Screengrab:](#screengrab)
 
 ####Overview:
 Profanity Checker is a simple PHP application that scans large blocks of text to prevent you from using NSFW words. 
+
 Input could be either in the form of a .txt file or raw text.
+
 Inspired from the [What Do You Love](https://en.wikipedia.org/wiki/WDYL_(search_engine)) Project by Google (this has now been depreciated), it enables you to perform checks across several modes including the [ones](https://gist.github.com/jamiew/1112488) deemed not fit by Google originally!
 
 ####Modes
