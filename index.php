@@ -5,7 +5,8 @@
 	include 'inc/layout/header.inc.php';
     include 'inc/layout/navbar.inc.php';
     error_reporting(E_ERROR);
-	if(isset($_FILES['file']))
+    
+	if(isset($_FILES['file']) && isset($_POST['checktype']))
 	{
 		$errors= "";
 	  	$error_trigger = 0;
@@ -20,19 +21,22 @@
 	  	if(empty($errors)==true)
 	  	{
 	    	$filepath = "uploaded_file/" . $file_name;
-	    	move_uploaded_file($file_tmp,$filepath );
-	    	$sentence=readfile($filepath);
-	    	echo $sentence;
-	  	} 
+	    	move_uploaded_file($file_tmp,$filepath);
+	    	$myfile = fopen($filepath, "r") or die("Unable to open file!");
+			$sentence = fread($myfile,filesize($filepath));
+			$check = $_POST['checktype'];	
+		} 
 	}
-
-	if(!isset($_POST['sentence']) && !isset($_POST['checktype']))
-		header("Location : index.php");
-	else 
+	else if(isset($_POST['sentence']) && isset($_POST['checktype'])) 
 	{
 		$sentence= $_POST['sentence'];
 		$check = $_POST['checktype'];
-
+	}
+	else
+	{
+		$output= "Please give input of either type and check the checkbox";
+	}
+	
 		if($check=="createcustom") //Just entering into database
 		{
 			$list= $_POST['list'];
@@ -66,9 +70,9 @@
 			$url="http://www.wdylike.appspot.com/?q=".urlencode($sentence);
 			$res = get_curl($url);
 			if($res=="false")
-				echo "Good to go!";
+				$output= "Good to go!";
 			else
-				echo "Oops. Seems like you used a bad word";
+				$output= "Oops. Seems like you used a bad word";
 		}
 		else if($check =="rmselect") //just check for selected words
 		{
@@ -82,11 +86,11 @@
 			{
 				if (in_array($word, $sent_split))
 				{
-				   echo "Oops. Seems like you used a bad word";
+				   $output= "Oops. Seems like you used a bad word";
 				}
 				else
 				{
-				   echo "Good to go!";
+				   $output= "Good to go!";
 				}
 			}
 		}
@@ -104,7 +108,7 @@
 
 					if(mysqli_num_rows($query_run) == 1 )
 					{	
-						echo "Oops. Seems like you used a bad word";
+						$output= "Oops. Seems like you used a bad word";
 						$flag=1;
 						break;
 					}
@@ -115,9 +119,9 @@
 				}
 			}
 			if ($flag==0)
-				echo "Good to go!";
-		}			
-	}
+				$output= "Good to go!";
+		}	
+		echo "<div colspan='3'><center>".$output."</center></div><hr><br>";		
 ?>
 <div class="container">
 	<table width="800" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
