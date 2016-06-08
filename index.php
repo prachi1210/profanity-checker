@@ -16,11 +16,16 @@
 	                        </tr>
 	                        <tr></tr>
 	                        <tr>
-	                        	<td colspan="3"><label><input type="checkbox" name="checktype" id="standard" value="standard">Standard check</label><br></td>
+	                        	<td colspan="3"><label><input type="checkbox" name="checktype" value="standard">Standard check</label><br></td>
 	                        </tr>
 	                        <tr>
-	                        	<td colspan="3"><label><input type="checkbox" name="checktype" id="custom" value="custom">Custom check</label><br></td>
-	                        </tr>		
+	                        	<td colspan="3"><label><input type="checkbox" name="checktype" value="custom">Custom check</label><br></td>
+	                        </tr>
+	                        <tr>
+	                        	<td width="78">Custom list</td>
+	                            <td width="6">:</td>
+	                            <td colspan="3"><input name="list" type="text" id="list"></td>
+	                        </tr>			
 	                        <tr>
 	                            <td>&nbsp;</td>
 	                            <td>&nbsp;</td>

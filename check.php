@@ -9,7 +9,7 @@
 	{
 		$sentence= $_POST['sentence'];
 		$check = $_POST['checktype'];
-		echo count($check);
+		
 		if($check=="standard")
 		{
 			$url="http://www.wdylike.appspot.com/?q=".$sentence;
@@ -21,7 +21,10 @@
 		}
 		else if($check =="custom")
 		{
-			$key  = 'ho';
+			$key= $_POST['list'];
+			$key = preg_replace("/[^a-zA-Z 0-9]+/", " ", $key);
+			$key_split =explode(" ", $key);
+			print_r($key_split);
 
 			$sentence = preg_replace("/[^a-zA-Z 0-9]+/", " ", $sentence);
 			$sent_split = explode(" ", $sentence);
